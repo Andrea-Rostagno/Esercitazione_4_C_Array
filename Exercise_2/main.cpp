@@ -24,32 +24,40 @@ int main()
     vector<double> r;
     double S;
     int n;
+    double V=0;
+    double R;
 
     while (getline(fin, line)) {
+        size_t c = line.find(';');
 
         if (line.empty() || line[0] == 'w') {
-            continue; // Ignora le righe non contenenti valori numerici
+            continue;
         }
         else if (line[0] == 'S') {
-            S=stoi(line.substr(2));
+            S=stoi(line.substr(c+1));
         }
         else if (line[0] == 'n') {
-            n=stoi(line.substr(2));
+            n=stoi(line.substr(c+1));
         }
         else {
-            size_t c = line.find(';');
             r.push_back(stod(line.substr(c+1)));
             w.push_back(stod(line.erase(c)));
 
         }
     }
 
-    fou <<"S "<<"= "<<fixed<<setprecision(2)<<S<<", "<<"n "<<"= "<<n<< endl;
+    for(int i=0;i<n;i++){
+        V=V+w[i]*S*(1+r[i]);
+    }
+
+    R=V/S-1;
+
+    fou <<"S "<<"= "<<fixed<<setprecision(2)<<S<<", ";
+    fou<<"n "<<"= "<<n<< endl;
     fou <<"w "<<"= "<<"[ "<<w<<"]"<<endl;
     fou <<"r "<<"= "<<"[ "<<r<<"]"<<endl;
-
-
-
+    fou <<"Rate of return of the portfolio: "<<setprecision(4)<<R<<endl;
+    fou <<"V: "<<setprecision(2)<<V<<endl;
 
 
     fin.close();

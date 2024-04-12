@@ -6,6 +6,6 @@
 
 using namespace std;
 
-ostream& operator<<(ostream& os,const vector<double> &a);
+ostream& operator<<(ostream& os,const vector<double> a);
 
 #endif

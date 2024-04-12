@@ -3,9 +3,9 @@
 
 using namespace std;
 
-ostream& operator<<(ostream& os, const vector<double> &a)
+ostream& operator<<(ostream& os, const vector<double> a)
 {
-    for (size_t i = 0; i < a.size(); ++i) {
+    for (size_t i = 0; i < a.size(); i++) {
         os<< a[i]<< " ";
     }
 
